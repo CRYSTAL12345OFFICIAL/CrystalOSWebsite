@@ -316,20 +316,12 @@
     }
 
     .desktop-preview {
-        background: 
-            radial-gradient(circle at 30% 40%, rgba(255,59,48,0.08) 0%, transparent 40%),
-            radial-gradient(circle at 70% 60%, rgba(255,100,90,0.05) 0%, transparent 40%),
-            linear-gradient(135deg, #0a0a0a 0%, #151515 100%);
+        background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 100%);
         border-radius: 12px;
-        height: 600px;
+        height: 500px;
         position: relative;
         overflow: hidden;
         box-shadow: inset 0 0 100px rgba(0,0,0,0.5);
-        background-image: 
-            radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-            radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
-        background-size: 30px 30px;
-        background-position: 0 0, 15px 15px;
     }
 
     .taskbar {
@@ -390,54 +382,21 @@
     }
 
     .desktop-content {
-        padding: 30px;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-        height: calc(100% - 50px);
-        align-content: start;
-    }
-
-    .desktop-icon {
+        padding: 40px;
         display: flex;
-        flex-direction: column;
+        justify-content: center;
         align-items: center;
-        gap: 8px;
-        padding: 12px;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: all 0.2s;
-        max-width: 80px;
-    }
-
-    .desktop-icon:hover {
-        background: rgba(255,255,255,0.05);
-    }
-
-    .desktop-icon-image {
-        font-size: 32px;
-        filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
-    }
-
-    .desktop-icon-label {
-        font-size: 11px;
-        text-align: center;
-        text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+        height: calc(100% - 50px);
     }
 
     .floating-window {
-        background: rgba(18,18,18,0.98);
-        border: 1px solid rgba(255,255,255,0.15);
-        border-radius: 16px;
-        width: 620px;
-        height: 420px;
-        box-shadow: 0 30px 80px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.05);
+        background: rgba(25,25,25,0.98);
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 12px;
+        width: 500px;
+        height: 350px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.7);
         overflow: hidden;
-        backdrop-filter: blur(40px);
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
     }
 
     .window-bar {
@@ -465,32 +424,20 @@
     }
 
     .sidebar-menu {
-        width: 180px;
-        background: rgba(0,0,0,0.4);
-        padding: 16px 12px;
-        border-right: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .menu-section-title {
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 1px;
-        opacity: 0.4;
-        margin-bottom: 8px;
-        padding: 0 12px;
+        width: 140px;
+        background: rgba(0,0,0,0.3);
+        padding: 12px 8px;
+        border-right: 1px solid rgba(255,255,255,0.05);
     }
 
     .menu-item {
-        padding: 10px 12px;
-        font-size: 13px;
-        border-radius: 8px;
-        margin-bottom: 2px;
+        padding: 8px 12px;
+        font-size: 12px;
+        border-radius: 6px;
+        margin-bottom: 4px;
         cursor: pointer;
-        opacity: 0.7;
+        opacity: 0.6;
         transition: all 0.2s;
-        display: flex;
-        align-items: center;
-        gap: 10px;
     }
 
     .menu-item.active {
@@ -506,8 +453,10 @@
 
     .content-area {
         flex: 1;
-        padding: 24px;
-        overflow-y: auto;
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
     }
 
     .setting-card {
@@ -908,113 +857,27 @@
                     </div>
                     
                     <div class="desktop-content">
-                        <div class="desktop-icon">
-                            <div class="desktop-icon-image">📁</div>
-                            <div class="desktop-icon-label">Documents</div>
-                        </div>
-                        <div class="desktop-icon">
-                            <div class="desktop-icon-image">🖼️</div>
-                            <div class="desktop-icon-label">Pictures</div>
-                        </div>
-                        <div class="desktop-icon">
-                            <div class="desktop-icon-image">🎵</div>
-                            <div class="desktop-icon-label">Music</div>
-                        </div>
-                        <div class="desktop-icon">
-                            <div class="desktop-icon-image">🗑️</div>
-                            <div class="desktop-icon-label">Trash</div>
-                        </div>
-                        
                         <div class="floating-window">
                             <div class="window-bar">
-                                <div style="display: flex; align-items: center; gap: 12px;">
-                                    <div style="display: flex; gap: 6px;">
-                                        <div style="width: 12px; height: 12px; border-radius: 50%; background: #ff5f57;"></div>
-                                        <div style="width: 12px; height: 12px; border-radius: 50%; background: #ffbd2e;"></div>
-                                        <div style="width: 12px; height: 12px; border-radius: 50%; background: #28ca42;"></div>
-                                    </div>
-                                    <span style="font-size: 13px; font-weight: 600; opacity: 0.9;">System Settings</span>
-                                </div>
+                                <span style="font-size: 13px; font-weight: 600;">Settings</span>
                                 <div class="mini-controls">
-                                    <span style="font-size: 14px; opacity: 0.5; cursor: pointer; padding: 0 8px;">─</span>
-                                    <span style="font-size: 14px; opacity: 0.5; cursor: pointer; padding: 0 8px;">□</span>
-                                    <span style="font-size: 14px; opacity: 0.5; cursor: pointer; padding: 0 8px;">✕</span>
+                                    <span style="font-size: 10px; opacity: 0.6;">─</span>
+                                    <span style="font-size: 10px; opacity: 0.6;">□</span>
+                                    <span style="font-size: 10px; opacity: 0.6;">✕</span>
                                 </div>
                             </div>
                             <div class="window-content">
                                 <div class="sidebar-layout">
                                     <div class="sidebar-menu">
-                                        <div class="menu-section-title">SYSTEM</div>
-                                        <div class="menu-item active">
-                                            <span>🏠</span>
-                                            <span>Home</span>
-                                        </div>
-                                        <div class="menu-item">
-                                            <span>🎨</span>
-                                            <span>Appearance</span>
-                                        </div>
-                                        <div class="menu-item">
-                                            <span>🔔</span>
-                                            <span>Notifications</span>
-                                        </div>
-                                        <div class="menu-section-title" style="margin-top: 16px;">PRIVACY</div>
-                                        <div class="menu-item">
-                                            <span>🔒</span>
-                                            <span>Security</span>
-                                        </div>
-                                        <div class="menu-item">
-                                            <span>🌐</span>
-                                            <span>Network</span>
-                                        </div>
-                                        <div class="menu-item">
-                                            <span>👤</span>
-                                            <span>Accounts</span>
-                                        </div>
+                                        <div class="menu-item active">🏠 Home</div>
+                                        <div class="menu-item">🎨 Appearance</div>
+                                        <div class="menu-item">🔒 Privacy</div>
+                                        <div class="menu-item">🌐 Network</div>
                                     </div>
                                     <div class="content-area">
-                                        <div style="margin-bottom: 20px;">
-                                            <div style="font-size: 20px; font-weight: 700; margin-bottom: 8px;">Welcome to Crystal OS</div>
-                                            <div style="font-size: 13px; opacity: 0.6;">Personalize your experience</div>
-                                        </div>
-                                        
-                                        <div class="setting-card" style="height: auto; padding: 16px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-                                            <div style="display: flex; align-items: center; gap: 12px;">
-                                                <div style="font-size: 24px;">🌙</div>
-                                                <div>
-                                                    <div style="font-size: 14px; font-weight: 600; margin-bottom: 2px;">Dark Mode</div>
-                                                    <div style="font-size: 11px; opacity: 0.5;">Easy on the eyes</div>
-                                                </div>
-                                            </div>
-                                            <div style="width: 44px; height: 24px; background: #ff3b30; border-radius: 12px; position: relative;">
-                                                <div style="position: absolute; right: 2px; top: 2px; width: 20px; height: 20px; background: white; border-radius: 50%;"></div>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="setting-card" style="height: auto; padding: 16px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-                                            <div style="display: flex; align-items: center; gap: 12px;">
-                                                <div style="font-size: 24px;">🔔</div>
-                                                <div>
-                                                    <div style="font-size: 14px; font-weight: 600; margin-bottom: 2px;">Do Not Disturb</div>
-                                                    <div style="font-size: 11px; opacity: 0.5;">Silence notifications</div>
-                                                </div>
-                                            </div>
-                                            <div style="width: 44px; height: 24px; background: rgba(255,255,255,0.1); border-radius: 12px; position: relative;">
-                                                <div style="position: absolute; left: 2px; top: 2px; width: 20px; height: 20px; background: rgba(255,255,255,0.5); border-radius: 50%;"></div>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="setting-card" style="height: auto; padding: 16px; display: flex; align-items: center; justify-content: space-between;">
-                                            <div style="display: flex; align-items: center; gap: 12px;">
-                                                <div style="font-size: 24px;">💎</div>
-                                                <div>
-                                                    <div style="font-size: 14px; font-weight: 600; margin-bottom: 2px;">Crystal Effects</div>
-                                                    <div style="font-size: 11px; opacity: 0.5;">Transparency & blur</div>
-                                                </div>
-                                            </div>
-                                            <div style="width: 44px; height: 24px; background: #ff3b30; border-radius: 12px; position: relative;">
-                                                <div style="position: absolute; right: 2px; top: 2px; width: 20px; height: 20px; background: white; border-radius: 50%;"></div>
-                                            </div>
-                                        </div>
+                                        <div class="setting-card"></div>
+                                        <div class="setting-card"></div>
+                                        <div class="setting-card"></div>
                                     </div>
                                 </div>
                             </div>
