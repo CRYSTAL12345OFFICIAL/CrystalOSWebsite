@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CrystalOS - Crystal Clear. Simply Powerful.</title>
+    <title>Crystal OS - Crystal Clear. Simply Powerful.</title>
     <style>
         * {
             margin: 0;
@@ -260,278 +260,6 @@
         background: rgba(255,59,48,0.1);
     }
 
-    /* Interface Preview Section */
-    .interface-preview {
-        max-width: 1100px;
-        margin: 0 auto;
-    }
-
-    .mockup-container {
-        background: rgba(255,255,255,0.03);
-        border: 1px solid rgba(255,255,255,0.1);
-        border-radius: 16px;
-        overflow: hidden;
-        box-shadow: 0 40px 100px rgba(0,0,0,0.5);
-    }
-
-    .mockup-header {
-        background: rgba(255,255,255,0.05);
-        padding: 12px 16px;
-        display: flex;
-        align-items: center;
-        border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
-
-    .window-controls {
-        display: flex;
-        gap: 8px;
-    }
-
-    .control {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-    }
-
-    .close { background: #ff5f57; }
-    .minimize { background: #ffbd2e; }
-    .maximize { background: #28ca42; }
-
-    .window-title {
-        flex: 1;
-        text-align: center;
-        font-size: 13px;
-        font-weight: 600;
-        opacity: 0.7;
-    }
-
-    .window-spacer {
-        width: 70px;
-    }
-
-    .mockup-screen {
-        background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-        padding: 40px;
-        position: relative;
-    }
-
-    .desktop-preview {
-        background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 100%);
-        border-radius: 12px;
-        height: 500px;
-        position: relative;
-        overflow: hidden;
-        box-shadow: inset 0 0 100px rgba(0,0,0,0.5);
-    }
-
-    .taskbar {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
-        background: rgba(20,20,20,0.95);
-        backdrop-filter: blur(20px);
-        border-top: 1px solid rgba(255,255,255,0.05);
-        display: flex;
-        align-items: center;
-        padding: 0 16px;
-        gap: 16px;
-    }
-
-    .start-section {
-        display: flex;
-        gap: 12px;
-    }
-
-    .app-icon {
-        font-size: 20px;
-        cursor: pointer;
-        opacity: 0.8;
-        transition: all 0.2s;
-        padding: 4px 8px;
-        border-radius: 6px;
-    }
-
-    .app-icon:hover {
-        opacity: 1;
-        background: rgba(255,255,255,0.1);
-    }
-
-    .taskbar-center {
-        flex: 1;
-        display: flex;
-        justify-content: center;
-    }
-
-    .search-bar {
-        background: rgba(255,255,255,0.05);
-        border: 1px solid rgba(255,255,255,0.1);
-        border-radius: 8px;
-        padding: 6px 16px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        min-width: 300px;
-    }
-
-    .system-tray {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-    }
-
-    .desktop-content {
-        padding: 40px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: calc(100% - 50px);
-    }
-
-    .floating-window {
-        background: rgba(25,25,25,0.98);
-        border: 1px solid rgba(255,255,255,0.1);
-        border-radius: 12px;
-        width: 500px;
-        height: 350px;
-        box-shadow: 0 20px 60px rgba(0,0,0,0.7);
-        overflow: hidden;
-    }
-
-    .window-bar {
-        background: rgba(255,255,255,0.03);
-        padding: 10px 16px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
-
-    .mini-controls {
-        display: flex;
-        gap: 12px;
-        font-size: 14px;
-    }
-
-    .window-content {
-        height: calc(100% - 41px);
-    }
-
-    .sidebar-layout {
-        display: flex;
-        height: 100%;
-    }
-
-    .sidebar-menu {
-        width: 140px;
-        background: rgba(0,0,0,0.3);
-        padding: 12px 8px;
-        border-right: 1px solid rgba(255,255,255,0.05);
-    }
-
-    .menu-item {
-        padding: 8px 12px;
-        font-size: 12px;
-        border-radius: 6px;
-        margin-bottom: 4px;
-        cursor: pointer;
-        opacity: 0.6;
-        transition: all 0.2s;
-    }
-
-    .menu-item.active {
-        background: rgba(255,59,48,0.2);
-        color: #ff3b30;
-        opacity: 1;
-    }
-
-    .menu-item:hover {
-        background: rgba(255,255,255,0.05);
-        opacity: 1;
-    }
-
-    .content-area {
-        flex: 1;
-        padding: 16px;
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    .setting-card {
-        height: 60px;
-        background: rgba(255,255,255,0.03);
-        border: 1px solid rgba(255,255,255,0.05);
-        border-radius: 8px;
-    }
-
-    .os-badges {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        margin-top: 30px;
-        flex-wrap: wrap;
-    }
-
-    .badge {
-        background: rgba(255,255,255,0.03);
-        border: 1px solid rgba(255,255,255,0.1);
-        border-radius: 12px;
-        padding: 16px 24px;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        transition: all 0.3s;
-    }
-
-    .badge:hover {
-        border-color: rgba(255,59,48,0.5);
-        background: rgba(255,59,48,0.05);
-    }
-
-    .badge-icon {
-        font-size: 28px;
-    }
-
-    .badge-text {
-        font-size: 11px;
-        line-height: 1.4;
-        font-weight: 600;
-        opacity: 0.7;
-    }
-
-    .interface-features {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 24px;
-    }
-
-    .if-card {
-        background: rgba(255,255,255,0.02);
-        border: 1px solid rgba(255,255,255,0.08);
-        border-radius: 16px;
-        padding: 24px;
-        transition: all 0.3s;
-    }
-
-    .if-card:hover {
-        border-color: rgba(255,59,48,0.3);
-        transform: translateY(-5px);
-    }
-
-    .if-card h4 {
-        font-size: 16px;
-        margin-bottom: 12px;
-        font-weight: 700;
-    }
-
-    .if-card p {
-        font-size: 14px;
-        color: rgba(255,255,255,0.6);
-        line-height: 1.6;
-    }
-
     /* Sections */
     section {
         position: relative;
@@ -777,7 +505,6 @@
 <nav id="nav">
     <div class="logo">Crystal<span>OS</span></div>
     <div class="nav-links">
-        <a href="#interface">Interface</a>
         <a href="#features">Features</a>
         <a href="#pricing">Pricing</a>
         <a href="#notify">Get Notified</a>
@@ -786,11 +513,11 @@
 
 <section class="hero">
     <div class="crystal">💎</div>
-    <h1>CrystalOS</h1>
+    <h1>Crystal OS</h1>
     <p class="tagline">Crystal Clear. Simply Powerful.</p>
     <div class="status">
         <span class="dot"></span>
-        LAUNCHING MAY 2027
+        LAUNCHING OCTOBER 2027
     </div>
     
     <div class="countdown">
@@ -815,115 +542,6 @@
     <div class="buttons">
         <a href="#pricing" class="btn btn-primary">Pre-Order Now - ₹560</a>
         <a href="#features" class="btn btn-secondary">Explore Features</a>
-    </div>
-</section>
-
-<section id="interface">
-    <h2 class="reveal">Beautiful. Familiar. Revolutionary.</h2>
-    <p class="reveal" style="text-align: center; color: rgba(255,255,255,0.6); max-width: 700px; margin: 0 auto 60px; font-size: 18px;">
-        Experience the perfect blend of Windows productivity, macOS elegance, Linux power, and Nothing's minimalism—all in one stunning interface.
-    </p>
-    
-    <div class="interface-preview reveal">
-        <div class="mockup-container">
-            <div class="mockup-header">
-                <div class="window-controls">
-                    <span class="control close"></span>
-                    <span class="control minimize"></span>
-                    <span class="control maximize"></span>
-                </div>
-                <div class="window-title">CrystalOS Desktop</div>
-                <div class="window-spacer"></div>
-            </div>
-            
-            <div class="mockup-screen">
-                <div class="desktop-preview">
-                    <div class="taskbar">
-                        <div class="start-section">
-                            <div class="app-icon">💎</div>
-                            <div class="app-icon">🌐</div>
-                            <div class="app-icon">📁</div>
-                            <div class="app-icon">⚙️</div>
-                        </div>
-                        <div class="taskbar-center">
-                            <div class="search-bar">
-                                <span style="opacity: 0.5;">🔍</span>
-                                <span style="opacity: 0.4; font-size: 13px;">Search Crystal OS...</span>
-                            </div>
-                        </div>
-                        <div class="system-tray">
-                            <span style="font-size: 12px; opacity: 0.7;">15:24</span>
-                        </div>
-                    </div>
-                    
-                    <div class="desktop-content">
-                        <div class="floating-window">
-                            <div class="window-bar">
-                                <span style="font-size: 13px; font-weight: 600;">Settings</span>
-                                <div class="mini-controls">
-                                    <span style="font-size: 10px; opacity: 0.6;">─</span>
-                                    <span style="font-size: 10px; opacity: 0.6;">□</span>
-                                    <span style="font-size: 10px; opacity: 0.6;">✕</span>
-                                </div>
-                            </div>
-                            <div class="window-content">
-                                <div class="sidebar-layout">
-                                    <div class="sidebar-menu">
-                                        <div class="menu-item active">🏠 Home</div>
-                                        <div class="menu-item">🎨 Appearance</div>
-                                        <div class="menu-item">🔒 Privacy</div>
-                                        <div class="menu-item">🌐 Network</div>
-                                    </div>
-                                    <div class="content-area">
-                                        <div class="setting-card"></div>
-                                        <div class="setting-card"></div>
-                                        <div class="setting-card"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="os-badges">
-                    <div class="badge">
-                        <span class="badge-icon">🪟</span>
-                        <span class="badge-text">Windows<br>Productivity</span>
-                    </div>
-                    <div class="badge">
-                        <span class="badge-icon">🍎</span>
-                        <span class="badge-text">macOS<br>Elegance</span>
-                    </div>
-                    <div class="badge">
-                        <span class="badge-icon">🐧</span>
-                        <span class="badge-text">Linux<br>Power</span>
-                    </div>
-                    <div class="badge">
-                        <span class="badge-icon">⚫</span>
-                        <span class="badge-text">Nothing<br>Minimalism</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="interface-features reveal" style="margin-top: 80px;">
-        <div class="if-card">
-            <h4>🪟 Windows Taskbar</h4>
-            <p>Familiar bottom taskbar with pinned apps and system tray for quick access to everything you need.</p>
-        </div>
-        <div class="if-card">
-            <h4>🍎 macOS Design Language</h4>
-            <p>Clean, rounded corners, smooth animations, and elegant typography inspired by Apple's design.</p>
-        </div>
-        <div class="if-card">
-            <h4>🐧 Linux Flexibility</h4>
-            <p>Full customization, powerful terminal, and complete control over your system.</p>
-        </div>
-        <div class="if-card">
-            <h4>⚫ Nothing Minimalism</h4>
-            <p>Dot matrix patterns, clean lines, and a focus on what matters without the clutter.</p>
-        </div>
     </div>
 </section>
 
@@ -987,7 +605,7 @@
 <section id="notify">
     <h2 class="reveal">Be the First to Know</h2>
     <p class="reveal" style="text-align: center; color: rgba(255,255,255,0.6); margin-bottom: 20px;">
-        Get notified when CrystalOS launches in October 2027.<br>
+        Get notified when Crystal OS launches in October 2027.<br>
         Early subscribers get exclusive launch benefits.
     </p>
     <form class="form-container reveal" id="form">
@@ -1007,8 +625,8 @@
         <a href="#">Terms</a>
     </div>
     <p class="copyright">
-        © 2026-2027 CrystalOS. All rights reserved.<br>
-        Launching May 25, 2027
+        © 2026-2027 Crystal OS. All rights reserved.<br>
+        Launching October 25, 2027
     </p>
 </footer>
 
@@ -1024,7 +642,7 @@
     });
 
     // Countdown
-    const launchDate = new Date('May 30, 2027 00:00:00').getTime();
+    const launchDate = new Date('October 25, 2027 00:00:00').getTime();
     
     function updateCountdown() {
         const now = new Date().getTime();
