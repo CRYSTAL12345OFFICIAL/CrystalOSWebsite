@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crystal OS - Crystal Clear. Simply Powerful.</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Background */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(255,59,48,0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(255,59,48,0.08) 0%, transparent 50%);
+            z-index: 0;
+        }
+
+        .grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 0;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 25px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(0,0,0,0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,59,48,0.1);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: #ff3b30;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #ff3b30;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 40px;
+            z-index: 1;
+        }
+
+        .crystal {
+            font-size: 100px;
+            margin-bottom: 30px;
+            animation: float 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 40px rgba(255,59,48,0.6));
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        h1 {
+            font-size: clamp(60px, 10vw, 120px);
+            font-weight: 900;
+            letter-spacing: -4px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff 0%, #ff3b30 50%, #fff 100%);
+            background-size: 200% auto;
+            background-clip: none;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 3s linear infinite;
+        }
+
+        @keyframes shine {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        .tagline {
+            font-size: clamp(20px, 3vw, 32px);
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 12px 24px;
+            background: rgba(255,59,48,0.1);
+            border: 1px solid rgba(255,59,48,0.3);
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 60px;
+        }
+
+        .dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #ff3b30;
+            border-radius: 50%;
+            margin-right: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Countdown */
+        .countdown {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .time-box {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 30px 40px;
+            min-width: 130px;
+            transition: all 0.3s;
+        }
+
+        .time-box:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255,59,48,0.5);
+            background: rgba(255,59,48,0.05);
+        }
+
+        .number {
+            display: block;
+            font-size: 52px;
+            font-weight: 900;
+            color: #ff3b30;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .label {
+            font-size: 12px;
+            color: rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Buttons */
+        .buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ff3b30, #ff6b5a);
+            color: #fff;
+            box-shadow: 0 20px 50px rgba(255,59,48,0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 25px 60px rgba(255,59,48,0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .btn-secondary:hover {
+            border-color: #ff3b30;
+            background: rgba(255,59,48,0.1);
+        }
+
+        /* Sections */
+        section {
+            position: relative;
+            z-index: 1;
+            padding: 120px 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: clamp(40px, 6vw, 64px);
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 80px;
+            letter-spacing: -2px;
+        }
+
+        /* Features */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 24px;
+            padding: 40px;
+            transition: all 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255,59,48,0.4);
+            background: rgba(255,59,48,0.05);
+            box-shadow: 0 30px 60px rgba(255,59,48,0.2);
+        }
+
+        .icon {
+            font-size: 56px;
+            margin-bottom: 24px;
+            display: block;
+        }
+
+        .card h3 {
+            font-size: 24px;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .card p {
+            color: rgba(255,255,255,0.6);
+            line-height: 1.7;
+        }
+
+        /* Pricing */
+        .pricing-card {
+            max-width: 500px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 32px;
+            padding: 60px 50px;
+            text-align: center;
+            transition: all 0.4s;
+        }
+
+        .pricing-card:hover {
+            transform: scale(1.02);
+            border-color: rgba(255,59,48,0.4);
+            box-shadow: 0 40px 80px rgba(255,59,48,0.3);
+        }
+
+        .price {
+            font-size: 80px;
+            font-weight: 900;
+            color: #ff3b30;
+            line-height: 1;
+            margin: 20px 0;
+        }
+
+        .currency {
+            font-size: 36px;
+        }
+
+        .period {
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 40px;
+            font-size: 16px;
+        }
+
+        .features-list {
+            list-style: none;
+            text-align: left;
+            margin: 40px 0;
+        }
+
+        .features-list li {
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            color: rgba(255,255,255,0.7);
+        }
+
+        .features-list li::before {
+            content: "✓";
+            color: #ff3b30;
+            font-weight: bold;
+            margin-right: 12px;
+        }
+
+        /* Form */
+        .form-container {
+            max-width: 600px;
+            margin: 50px auto 0;
+            display: flex;
+            gap: 15px;
+        }
+
+        input[type="email"] {
+            flex: 1;
+            padding: 18px 28px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 50px;
+            color: #fff;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        input[type="email"]:focus {
+            border-color: #ff3b30;
+            background: rgba(255,255,255,0.05);
+        }
+
+        input::placeholder {
+            color: rgba(255,255,255,0.3);
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #ff3b30;
+        }
+
+        .copyright {
+            color: rgba(255,255,255,0.3);
+            font-size: 14px;
+        }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            nav {
+                padding: 20px 30px;
+            }
+
+            .nav-links {
+                gap: 20px;
+            }
+
+            .hero {
+                padding: 0 30px;
+            }
+
+            .countdown {
+                gap: 20px;
+                flex-wrap: wrap;
+            }
+
+            .time-box {
+                min-width: 100px;
+                padding: 20px 30px;
+            }
+
+            .number {
+                font-size: 40px;
+            }
+
+            .buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            section {
+                padding: 80px 30px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="grid"></div>
+
+    <nav id="nav">
+        <div class="logo">Crystal<span>OS</span></div>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#notify">Get Notified</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="crystal">💎</div>
+        <h1>Crystal OS</h1>
+        <p class="tagline">Crystal Clear. Simply Powerful.</p>
+        <div class="status">
+            <span class="dot"></span>
+            LAUNCHING OCTOBER 2027
+        </div>
+        
+        <div class="countdown">
+            <div class="time-box">
+                <span class="number" id="days">000</span>
+                <span class="label">Days</span>
+            </div>
+            <div class="time-box">
+                <span class="number" id="hours">00</span>
+                <span class="label">Hours</span>
+            </div>
+            <div class="time-box">
+                <span class="number" id="minutes">00</span>
+                <span class="label">Minutes</span>
+            </div>
+            <div class="time-box">
+                <span class="number" id="seconds">00</span>
+                <span class="label">Seconds</span>
+            </div>
+        </div>
+
+        <div class="buttons">
+            <a href="#pricing" class="btn btn-primary">Pre-Order Now - ₹560</a>
+            <a href="#features" class="btn btn-secondary">Explore Features</a>
+        </div>
+    </section>
+
+    <section id="features">
+        <h2 class="reveal">Built for Everyone</h2>
+        <div class="features-grid">
+            <div class="card reveal">
+                <span class="icon">👨‍👩‍👧‍👦</span>
+                <h3>Family First</h3>
+                <p>Designed from the ground up for families. Simple enough for everyone, powerful enough for anything.</p>
+            </div>
+            <div class="card reveal">
+                <span class="icon">⚡</span>
+                <h3>Lightning Fast</h3>
+                <p>Optimized performance that runs smoothly even on older hardware. No bloat, just speed.</p>
+            </div>
+            <div class="card reveal">
+                <span class="icon">🔒</span>
+                <h3>Secure by Design</h3>
+                <p>Built-in security features protect your family's data without compromising usability.</p>
+            </div>
+            <div class="card reveal">
+                <span class="icon">🎨</span>
+                <h3>Beautiful Interface</h3>
+                <p>Clean, modern design inspired by the best of Windows, macOS, and Linux aesthetics.</p>
+            </div>
+            <div class="card reveal">
+                <span class="icon">🆓</span>
+                <h3>One-Time Purchase</h3>
+                <p>Pay once, own forever. No subscriptions, no hidden costs, no tracking.</p>
+            </div>
+            <div class="card reveal">
+                <span class="icon">🔄</span>
+                <h3>Regular Updates</h3>
+                <p>Continuous improvements and new features delivered regularly at no extra cost.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing">
+        <h2 class="reveal">Simple Pricing</h2>
+        <div class="pricing-card reveal">
+            <div class="price">
+                <span class="currency">₹</span>560
+            </div>
+            <p class="period">One-time payment • Lifetime access</p>
+            
+            <ul class="features-list">
+                <li>Lifetime license for 3 devices</li>
+                <li>All future updates included</li>
+                <li>Priority email support</li>
+                <li>Installation assistance</li>
+                <li>Community access</li>
+                <li>30-day money-back guarantee</li>
+            </ul>
+            
+            <a href="#notify" class="btn btn-primary" style="width: 100%;">Reserve Your Copy</a>
+        </div>
+    </section>
+
+    <section id="notify">
+        <h2 class="reveal">Be the First to Know</h2>
+        <p class="reveal" style="text-align: center; color: rgba(255,255,255,0.6); margin-bottom: 20px;">
+            Get notified when Crystal OS launches in October 2027.<br>
+            Early subscribers get exclusive launch benefits.
+        </p>
+        <form class="form-container reveal" id="form">
+            <input type="email" placeholder="Enter your email address" required>
+            <button type="submit" class="btn btn-primary">Notify Me</button>
+        </form>
+        <p id="message" style="text-align: center; margin-top: 20px; color: #4ade80;"></p>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#">GitHub</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#features">Features</a>
+            <a href="#">Contact</a>
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+        </div>
+        <p class="copyright">
+            © 2026-2027 Crystal OS. All rights reserved.<br>
+            Launching October 25, 2027
+        </p>
+    </footer>
+
+    <script>
+        // Navbar
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Countdown
+        const launchDate = new Date('October 25, 2027 00:00:00').getTime();
+        
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = launchDate - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = String(days).padStart(3, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+        
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Reveal on scroll
+        const reveals = document.querySelectorAll('.reveal');
+        
+        function checkReveal() {
+            reveals.forEach(element => {
+                const top = element.getBoundingClientRect().top;
+                const isVisible = top < window.innerHeight - 100;
+                
+                if (isVisible) {
+                    element.classList.add('active');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', checkReveal);
+        checkReveal();
+
+        // Form
+        document.getElementById('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input').value;
+            const msg = document.getElementById('message');
+            
+            msg.textContent = `✓ Thanks! We'll notify ${email} when Crystal OS launches.`;
+            this.reset();
+            
+            setTimeout(() => {
+                msg.textContent = '';
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
