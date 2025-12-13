@@ -892,13 +892,13 @@
             // Spread particles across entire width
             p.style.left = (Math.random() * 100) + '%';
             // Start from bottom of screen and beyond
-            p.style.bottom = (Math.random() * 50 - 50) + 'vh';
+            p.style.bottom = (Math.random() * 30 - 30) + 'vh';
             // Random horizontal drift - much more movement
-            p.style.setProperty('--x', (Math.random() - 0.5) * 800 + 'px');
+            p.style.setProperty('--x', (Math.random() - 0.5) * 500 + 'px');
             // Stagger animation start times
-            p.style.animationDelay = (Math.random() * 15) + 's';
+            p.style.animationDelay = (Math.random() * 12) + 's';
             // Vary animation speeds more dramatically
-            p.style.animationDuration = (10 + Math.random() * 10) + 's';
+            p.style.animationDuration = (8 + Math.random() * 8) + 's';
             pc.appendChild(p);
         };
 
