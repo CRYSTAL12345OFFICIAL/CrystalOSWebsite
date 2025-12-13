@@ -618,6 +618,98 @@
             .bento { grid-template-columns: 1fr; }
             .stats { grid-template-columns: 1fr; }
         }
+        /* Pricing Section */
+        .pricing-section {
+            padding: 150px 80px;
+            position: relative;
+            z-index: 10;
+        }
+        .pricing-card {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.03);
+            border: 2px solid rgba(0,240,255,0.3);
+            border-radius: 40px;
+            padding: 80px 60px;
+            backdrop-filter: blur(30px);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            background: linear-gradient(135deg, rgba(0,240,255,0.3), rgba(168,85,247,0.3));
+            border-radius: 40px;
+            z-index: -1;
+            filter: blur(30px);
+            animation: priceGlow 3s ease-in-out infinite;
+        }
+        @keyframes priceGlow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        .pricing-card h3 {
+            font-size: 24px;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 20px;
+            font-weight: 600;
+            letter-spacing: 3px;
+        }
+        .price {
+            font-size: clamp(70px, 10vw, 100px);
+            font-weight: 900;
+            background: linear-gradient(135deg, #00f0ff, #a855f7, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            line-height: 1;
+        }
+        .price-desc {
+            font-size: 18px;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        .price-features {
+            text-align: left;
+            margin-bottom: 40px;
+        }
+        .price-feature {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            color: rgba(255,255,255,0.8);
+            font-size: 16px;
+        }
+        .price-feature:last-child {
+            border-bottom: none;
+        }
+        .check {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #00f0ff, #a855f7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            nav, .section, footer { padding: 20px; }
+            .menu { display: none; }
+            .apps { grid-template-columns: repeat(2, 1fr); }
+            .form { flex-direction: column; }
+            .fc { flex-direction: column; gap: 20px; }
+            .bento { grid-template-columns: 1fr; }
+            .stats { grid-template-columns: 1fr; }
+            .pricing-section { padding: 80px 20px; }
+        }
     </style>
 </head>
 <body>
@@ -635,8 +727,8 @@
         <div class="logo">CrystalOS</div>
         <ul class="menu">
             <li><a href="#home">HOME</a></li>
-            <li><a href="#features">FEATURES</a></li>
-            <li><a href="#showcase">SHOWCASE</a></li>
+            <li><a href="#features">KEY FEATURES</a></li>
+            <li><a href="#showcase">INTERFACE</a></li>
             <li><a href="#join">JOIN</a></li>
         </ul>
     </nav>
@@ -648,7 +740,7 @@
         <div class="subtitle">The revolutionary operating system where intelligence meets elegance. Built for creators, dreamers, and innovators.</div>
         <div class="cta">
             <button class="btn btn-glow" onclick="document.getElementById('join').scrollIntoView({behavior:'smooth'})">JOIN WAITLIST</button>
-            <button class="btn btn-glass" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">EXPLORE</button>
+            <button class="btn btn-glass" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">EXPLORE MORE</button>
         </div>
         <div class="stats">
             <div class="stat">
@@ -730,6 +822,41 @@
         </div>
     </section>
 
+    <section class="pricing-section" id="pricing">
+        <div class="sh">
+            <div class="tag">PRICING</div>
+            <h2 class="st">Simple & Affordable</h2>
+        </div>
+        <div class="pricing-card">
+            <h3>EARLY ACCESS</h3>
+            <div class="price">₹560</div>
+            <p class="price-desc">One-time payment for lifetime access</p>
+            <div class="price-features">
+                <div class="price-feature">
+                    <div class="check">✓</div>
+                    <span>Lifetime updates & support</span>
+                </div>
+                <div class="price-feature">
+                    <div class="check">✓</div>
+                    <span>All premium features unlocked</span>
+                </div>
+                <div class="price-feature">
+                    <div class="check">✓</div>
+                    <span>Priority customer support</span>
+                </div>
+                <div class="price-feature">
+                    <div class="check">✓</div>
+                    <span>Early access to new features</span>
+                </div>
+                <div class="price-feature">
+                    <div class="check">✓</div>
+                    <span>Commercial usage rights</span>
+                </div>
+            </div>
+            <button class="btn btn-glow" onclick="alert('Thank you for your interest! Payment portal coming soon.')">GET CRYSTALOS</button>
+        </div>
+    </section>
+
     <section class="section" id="join">
         <div class="notify">
             <h2>Be Among The First</h2>
@@ -751,7 +878,7 @@
                 <a href="#" class="sl">📧</a>
             </div>
         </div>
-        <div class="copy">&copy; 2024 CrystalOS. Redefining computing.</div>
+        <div class="copy">&copy; 2025 CrystalOS. Redefining computing.</div>
     </footer>
 
     <div class="fab" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
