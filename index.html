@@ -53,6 +53,38 @@
             33% { transform: translate(100px, -150px) scale(1.2); }
             66% { transform: translate(-100px, 100px) scale(0.8); }
         }
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            /* Disable orb animations on mobile */
+            .orb {
+                animation: none !important;
+                will-change: auto;
+            }
+            
+            /* Reduce orb blur for better performance */
+            .orbs {
+                filter: blur(100px);
+                opacity: 0.4;
+            }
+            
+            /* Smaller orbs on mobile */
+            .orb1 { 
+                width: 400px; 
+                height: 400px; 
+                top: -200px; 
+                left: -100px; 
+            }
+            .orb2 { 
+                width: 350px; 
+                height: 350px; 
+                bottom: -150px; 
+                right: -50px; 
+            }
+            .orb3 { 
+                width: 300px; 
+                height: 300px; 
+            }
+        }
 
         /* Nav */
         nav {
@@ -930,6 +962,30 @@
             .update-title {
                 font-size: 16px;
             }
+            /* Optimize backdrop-filter for mobile */
+            .carousel-box {
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+            }
+            
+            /* Reduce image quality slightly for faster loading */
+            .update-image {
+                image-rendering: optimizeSpeed;
+            }
+            
+            /* Disable hover effects on mobile */
+            .update-image:hover {
+                transform: none;
+            }
+            
+            .carousel-btn:hover {
+                transform: none;
+                box-shadow: none;
+            }
+            
+            .dot:hover {
+                transform: none;
+            }
         }
     </style>
 </head>
@@ -1210,7 +1266,13 @@
 
         // Update carousel
         function updateCarousel() {
-            slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+            // Use translate3d for better mobile performance
+            const isMobile = window.innerWidth <= 768;
+            if (isMobile) {
+                slidesContainer.style.transform = `translate3d(-${currentSlide * 100}%, 0, 0)`;
+            } else {
+                slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+            }
             
             // Update dots
             const dots = dotsContainer.children;
